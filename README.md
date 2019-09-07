@@ -94,7 +94,7 @@ The final polygon may have world border points (*wbp*s) within it. How do we kno
 
 
 
-![border case 2](cornerCase.png)
+![border case 2](cornerCases.png)
 
 
 
