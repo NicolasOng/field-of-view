@@ -59,15 +59,19 @@ For each vertex *v* defining the wall, a point *g* along the world's border is g
 
 1. *g* is on the line defined by *p* and *v*.
 
-2. *v* is in between the *p* and *g*.
+2. *v* is inbetween the points *p* and *g*.
 
 
 
-*v* is put into a list of potential points (*lpp*). Points that may be a part of the final polygon.
+Condition 2 prevents points from being generated on the world border "behind" the player.
 
 
 
-*v* is also put into one of four groups - *N*, *E*, *S*, *W* - depending on which side of the world border *g* is on. This grouping becomes important in the next step.
+Each *v* and *g* pair is put into a list of potential points. These are points that may be a part of the final polygon. 
+
+
+
+Each *v* is also put into one of four groups - *N*, *E*, *S*, *W* - depending on which side of the world border *g* is on. This grouping becomes important in the next step.
 
 
 
@@ -86,16 +90,16 @@ The final polygon may have world border points (*wbp*s) within it. How do we kno
 1. Pick a point from each group. (*N*, *E*, *S*, *W*)
 2. For each possible pair of points,
 	- Define a line between them.
-	- Add the *wbp*s on the side of the line opposite to the player.
+	- Add the *wbp*s on the side of the line opposite to the player to the list of potential points.
 
 
 
-![border case 2](cornerCases.png)
+![border case 2](cornerCase.png)
 
 
 
-Finishing Touch:
+Finally:
 
 
 
-Determine the final points by using a convex hull algorithm.
+Determine the final points of the final polygon by using a convex hull algorithm on the list of potential points.
